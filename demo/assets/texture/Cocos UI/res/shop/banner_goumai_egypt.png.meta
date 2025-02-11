@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "44765589-dab8-439a-9a7b-6db5445f7851",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 494,
+  "height": 168,
+  "platformSettings": {},
+  "subMetas": {
+    "banner_goumai_egypt": {
+      "ver": "1.0.6",
+      "uuid": "b902cebd-fde1-4948-8b2f-50a3a2b1cf13",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "44765589-dab8-439a-9a7b-6db5445f7851",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 494,
+      "height": 168,
+      "rawWidth": 494,
+      "rawHeight": 168,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

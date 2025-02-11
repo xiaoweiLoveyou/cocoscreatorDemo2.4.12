@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "d0df126c-702e-4dfb-a6a5-6dd2fa45e49a",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 150,
+  "height": 150,
+  "platformSettings": {},
+  "subMetas": {
+    "ic_机械炮台龟": {
+      "ver": "1.0.6",
+      "uuid": "bed5f883-a7f6-4916-b9e5-5c2382938378",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "d0df126c-702e-4dfb-a6a5-6dd2fa45e49a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 2,
+      "offsetY": -5.5,
+      "trimX": 43,
+      "trimY": 49,
+      "width": 68,
+      "height": 63,
+      "rawWidth": 150,
+      "rawHeight": 150,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

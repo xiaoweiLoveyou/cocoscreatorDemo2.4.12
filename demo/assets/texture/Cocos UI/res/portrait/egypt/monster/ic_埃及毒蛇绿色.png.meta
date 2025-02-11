@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "64d1cb40-7328-4823-8801-f49e5ee8ce33",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 150,
+  "height": 150,
+  "platformSettings": {},
+  "subMetas": {
+    "ic_埃及毒蛇绿色": {
+      "ver": "1.0.6",
+      "uuid": "17e947c1-8f86-4fd7-93e0-5f01498a8c68",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "64d1cb40-7328-4823-8801-f49e5ee8ce33",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1.5,
+      "offsetY": -6,
+      "trimX": 27,
+      "trimY": 41,
+      "width": 99,
+      "height": 80,
+      "rawWidth": 150,
+      "rawHeight": 150,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

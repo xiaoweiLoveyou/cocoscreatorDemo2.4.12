@@ -1,0 +1,133 @@
+// Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: vs
+      frag: fs
+      blendState:
+        targets:
+        - blend: true
+      rasterizerState:
+        cullMode: none
+      properties:
+        texture: { value: white }
+        alphaThreshold: { value: 0.5 }
+        u_Radius: { value: 0.5 }   // 半径
+        u_Center : { value: [0.5, 0.5] }  // 圆心位置
+        textureSize: { value: [1, 1] }    // 纹理uv坐标范围
+}%
+
+
+CCProgram vs %{
+  precision highp float;
+
+  #include <cc-global>
+  #include <cc-local>
+
+  in vec3 a_position;
+  in vec4 a_color;
+  out vec4 v_color;
+
+  #if USE_TEXTURE
+  in vec2 a_uv0;
+  out vec2 v_uv0;
+  #endif
+
+  void main () {
+    vec4 pos = vec4(a_position, 1);
+
+    #if CC_USE_MODEL
+    pos = cc_matViewProj * cc_matWorld * pos;
+    #else
+    pos = cc_matViewProj * pos;
+    #endif
+
+    #if USE_TEXTURE
+    v_uv0 = a_uv0;
+    #endif
+
+    v_color = a_color;
+
+    gl_Position = pos;
+  }
+}%
+
+
+CCProgram fs %{
+  precision highp float;
+
+  #include <alpha-test>
+  #include <texture>
+
+  in vec4 v_color;
+
+  #if USE_TEXTURE
+  in vec2 v_uv0;
+  uniform sampler2D texture;
+  #endif
+
+  uniform fragUniforms{
+    vec2 u_Center;
+    vec2 textureSize;
+    float u_Radius;
+  };
+
+  void main () {
+    vec4 o = vec4(1, 1, 1, 1);
+
+    #if USE_TEXTURE
+      // 对UV坐标进行纹理采样
+      CCTexture(texture, v_uv0, o);
+
+      // 相对于中心点纹理的uv坐标
+      vec2 uv = v_uv0 - u_Center;
+      // // 矫正uv坐标 重新结算宽高比
+      uv.x *= textureSize.x / textureSize.y;
+      // 计算当前像素点到圆心的距离
+      float dis = length(uv);
+
+      // 平滑插值，常用来抗锯齿,过度更加平滑
+      float smoothRadius = 0.01;  
+      /**
+      * smoothstep(x, y, a)  x < a < y 时，返回0~1之间的插值  a < x 返回0  a > y 返回1
+      **/
+      float alpha = 1.0 - smoothstep(u_Radius - smoothRadius, u_Radius, dis);
+      // 丢弃透明度小于阈值的像素
+      o.a *= alpha;
+      if (o.a <= 0.0) {
+        discard;
+      }
+
+
+      // // 方案二：
+      // // 计算当前像素点到圆心的距离
+      // vec2 uv = v_uv0 - u_Center;
+      // // 以最小的边为半径 为比例计算圆形的半径
+      // float radius = u_Radius;
+      // if (textureSize.x > textureSize.y) {
+      //   radius = u_Radius * (textureSize.y / textureSize.x);
+      // } else {
+      //   radius = u_Radius * (textureSize.x / textureSize.y);
+      // }
+      // float dis = length(uv);
+      
+      // // 丢弃透明度小于阈值的像素
+      // float smoothRadius = 0.01; 
+      // float alpha = 1.0 - smoothstep(radius - smoothRadius, radius, dis);
+      // o.a *= alpha;
+      // if (o.a <= 0.0) {
+      //   discard;
+      // }
+    #endif
+
+    o *= v_color;
+    ALPHA_TEST(o);
+
+    #if USE_BGRA
+      gl_FragColor = o.bgra;
+    #else
+      gl_FragColor = o.rgba;
+    #endif
+  }
+}%

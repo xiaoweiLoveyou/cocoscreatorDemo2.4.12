@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "09999c0d-0ab2-4382-b21f-54c64473541c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 150,
+  "height": 150,
+  "platformSettings": {},
+  "subMetas": {
+    "ic_长矛兵": {
+      "ver": "1.0.6",
+      "uuid": "d892bc8d-b8ac-470c-a0e3-89c6b81d0722",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "09999c0d-0ab2-4382-b21f-54c64473541c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -2,
+      "offsetY": 10.5,
+      "trimX": 32,
+      "trimY": 10,
+      "width": 82,
+      "height": 109,
+      "rawWidth": 150,
+      "rawHeight": 150,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
